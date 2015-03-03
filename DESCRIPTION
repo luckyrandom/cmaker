@@ -1,0 +1,9 @@
+Package: rcmake
+Type: Package
+Title: CMake tempelate for R package
+Version: 0.1
+Date: 2015-03-03
+Author: Chenliang Xu <luckyrand@gmail.com>
+Maintainer: Chenliang Xu <luckyrand@gmail.com>
+Description: CMake tempelate for R package.
+License: MIT + file LICENSE

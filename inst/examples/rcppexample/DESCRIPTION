@@ -1,0 +1,11 @@
+Package: rcppexample
+Type: Package
+Title: An exmaple of R package using Rcpp
+Version: 1.0
+Date: 2015-03-03
+Author: Chenliang Xu
+Maintainer: Chenliang Xu <luckyrand@gmail.com>
+Description: An exmaple of R package using Rcpp, for testing CMake
+License: GPL 3
+Imports: Rcpp (>= 0.11.2)
+LinkingTo: Rcpp

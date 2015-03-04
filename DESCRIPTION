@@ -6,4 +6,6 @@ Date: 2015-03-03
 Author: Chenliang Xu <luckyrand@gmail.com>
 Maintainer: Chenliang Xu <luckyrand@gmail.com>
 Description: CMake tempelate for R package.
+Imports: devtools
+Sugguests: Rcpp
 License: MIT + file LICENSE

@@ -5,6 +5,9 @@ after_success:
   - git config --global user.name "Chenliang Xu"
   - ./deploy.sh -s master-src -d master -c 'make -k prebuild'
 
+before_script:
+  - Rscript -e 'library(devtools); document(clean=TRUE, reload=TRUE);'
+
 env:
   global:
     secure: "WteE7/dyLk2gQduG29OsSfwSEn3nD3GSPOn16aOhXLgVwJKnjBcD3EtrJ2Z1RoQXw7ERSrkdxz+vpIBhSofcL0FaREMCzsPflB8lAGl1t4cApEj+Lx/N5TMw+7Whwmxdd5IK++FW33dxkBE22vkcTnlLusvK2OJ6IegxMure9V4="

@@ -1,0 +1,16 @@
+language: r
+
+after_success:
+  - git config --global user.email "luckyrandom@gmail.com"
+  - git config --global user.name "Chenliang Xu"
+  - ./deploy.sh -s master-src -d master -c 'make -k prebuild'
+
+env:
+  global:
+    secure: "WteE7/dyLk2gQduG29OsSfwSEn3nD3GSPOn16aOhXLgVwJKnjBcD3EtrJ2Z1RoQXw7ERSrkdxz+vpIBhSofcL0FaREMCzsPflB8lAGl1t4cApEj+Lx/N5TMw+7Whwmxdd5IK++FW33dxkBE22vkcTnlLusvK2OJ6IegxMure9V4="
+    
+branches:
+  except:
+    ## exclude the deploy branch from build on travis-ci
+    - master
+    

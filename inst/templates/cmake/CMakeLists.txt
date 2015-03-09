@@ -1,15 +1,13 @@
 cmake_minimum_required(VERSION 2.8.4)
+set(PKG_DIR ${CMAKE_CURRENT_SOURCE_DIR}/..)
 
 # project(Project)
-
-set(PKG_DIR ${CMAKE_CURRENT_SOURCE_DIR}/..)
 
 FILE(GLOB SOURCE_FILES
   ${PKG_DIR}/src/*.h
   ${PKG_DIR}/src/*.hpp
   ${PKG_DIR}/src/*.cc
   ${PKG_DIR}/src/*.cpp)
-
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "Modules")
 find_package(LibR)

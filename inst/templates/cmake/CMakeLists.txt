@@ -29,6 +29,7 @@ execute_process(
   )
 include_directories(BEFORE ${LIBR_INCLUDE_DIRS})
 include_directories(BEFORE ${PKG_INCLUDE_DIRS})
+include_directories(BEFORE "../inst/include/")
 
 execute_process(
   COMMAND ${LIBR_EXECUTABLE} "CMD" "config" "--ldflags"

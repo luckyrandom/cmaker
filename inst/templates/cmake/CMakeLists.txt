@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8.4)
 set(PKG_DIR ${CMAKE_CURRENT_SOURCE_DIR}/..)
 
-# project(Project)
+project(@@project@@ LANGUAGES @@language@@)
 
 FILE(GLOB SOURCE_FILES
   ${PKG_DIR}/src/*.h
@@ -47,6 +47,7 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_RELEASE ${PKG_DIR}/src/)
 add_library(${PKG_NAME}_lib SHARED ${SOURCE_FILES})
 target_link_libraries(${PKG_NAME}_lib
   ${LIBR_LIBRARIES})
+set_property(TARGET ${PKG_NAME}_lib PROPERTY CXX_STANDARD @@cxx_standard@@)
 
 if (APPLE)
     set_property(TARGET ${PKG_NAME}_lib PROPERTY PREFIX "")

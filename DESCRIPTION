@@ -9,3 +9,4 @@ Description: CMake tempelate for R package.
 Imports: devtools (>= 1.7.0.9000)
 Sugguests: Rcpp
 License: MIT + file LICENSE
+Suggests: testthat

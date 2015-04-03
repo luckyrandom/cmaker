@@ -1,13 +1,3 @@
-cmake_template <- function(settings) {
-  lines <- readLines(system.file("templates/cmake/CMakeLists.txt", package = "RCMakeTemplate"))
-  for(var in names(settings)) {
-    lines <- gsub(paste0("@@", var, "@@"),
-                  settings[[var]],
-                  lines)
-  }
-  return(lines)
-}
-
 add_cmake <- function(dir,
                       project = "Project",
                       language = c("CXX", "C", "Fortran"),
@@ -25,6 +15,7 @@ add_cmake <- function(dir,
   settings <- list(project = project,
                    language = language,
                    cxx_standard = cxx_standard)
-  writeLines(cmake_template(settings),
+  writeLines(cmake_template(readLines(system.file("templates/cmake/CMakeLists.txt", package = "RCMakeTemplate")),
+                            settings),
              file.path(dir, "cmake", "CMakeLists.txt"))  
 }

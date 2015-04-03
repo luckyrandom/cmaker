@@ -1,3 +1,11 @@
+##' Test existence of a system command.
+##'
+##' Test existence of a system command by trying to run the command
+##' with test_options.
+##' @param command The name or path of command to run.
+##' @param test_options The options passed to command for testing run.
+##' @return TRUE if the command successes; FALSE if it fails.
+##' @author Chenliang Xu
 command_exist <- function(command, test_options) {
   command_base <- basename(command)
   default_options <- c(make = "--version",

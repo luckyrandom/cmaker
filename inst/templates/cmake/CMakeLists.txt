@@ -40,6 +40,10 @@ execute_process(
   )
 set(CMAKE_SHARED_LINKER_FLAGS ${R_LD_FLAGS})
 
+if (APPLE)
+  set(CMAKE_MACOSX_RPATH OFF)
+endif()
+
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PKG_DIR}/src/)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_DEBUG ${PKG_DIR}/src/)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_RELEASE ${PKG_DIR}/src/)
@@ -50,7 +54,7 @@ target_link_libraries(${PKG_NAME}_lib
 set_property(TARGET ${PKG_NAME}_lib PROPERTY CXX_STANDARD @@cxx_standard@@)
 
 if (APPLE)
-    set_property(TARGET ${PKG_NAME}_lib PROPERTY PREFIX "")
-    set_property(TARGET ${PKG_NAME}_lib PROPERTY OUTPUT_NAME "${PKG_NAME}.so")
-    set_property(TARGET ${PKG_NAME}_lib PROPERTY SUFFIX "")
+  set_property(TARGET ${PKG_NAME}_lib PROPERTY PREFIX "")
+  set_property(TARGET ${PKG_NAME}_lib PROPERTY OUTPUT_NAME "${PKG_NAME}.so")
+  set_property(TARGET ${PKG_NAME}_lib PROPERTY SUFFIX "")
 endif()

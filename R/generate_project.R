@@ -22,6 +22,13 @@ ls_generators <- function() {
 
 post_generate_hook <- list()
 
+##' Generate project file for IDE.
+##'
+##' Call cmake to generate project file for IDE.
+##' @param dir the directory
+##' @param generator the cmake generator to use
+##' @param ... args pass to cmake
+##' @author Chenliang Xu
 generate_project <- function(dir, generator,
                              ...) {
   generator <- match.arg(generator, ls_generators())

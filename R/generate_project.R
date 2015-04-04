@@ -9,6 +9,10 @@ generators_mac <- c("Unix Makefiles",
                     "Kate - Ninja",
                     "Sublime Text 2 - Ninja")
 
+##' Get supported cmake generators.
+##'
+##' @return supported generators
+##' @author Chenliang Xu
 ls_generators <- function() {
   switch(Sys.info()[['sysname']],
          Windows= generators_windows,

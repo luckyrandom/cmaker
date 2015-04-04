@@ -9,7 +9,7 @@ FILE(GLOB SOURCE_FILES
   ${PKG_DIR}/src/*.cc
   ${PKG_DIR}/src/*.cpp)
 
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "Modules")
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/Modules)
 find_package(LibR)
 if(${LIBR_FOUND})
 else()

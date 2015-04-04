@@ -15,7 +15,7 @@ add_cmake <- function(dir,
   settings <- list(project = project,
                    language = language,
                    cxx_standard = cxx_standard)
-  writeLines(cmake_template(readLines(system.file("templates/cmake/CMakeLists.txt", package = "RCMakeTemplate")),
-                            settings),
+  writeLines(template(readLines(system.file("templates/cmake/CMakeLists.txt", package = "RCMakeTemplate")),
+                      settings),
              file.path(dir, "cmake", "CMakeLists.txt"))  
 }

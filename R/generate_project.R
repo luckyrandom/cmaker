@@ -1,13 +1,7 @@
 generators_linux <- c("Unix Makefiles",
                       "Ninja",
-                      "Xcode",
                       "CodeBlocks - Ninja",
-                      "CodeLite - Ninja",
-                      "Eclipse CDT4 - Ninja",
-                      "KDevelop3",
-                      "KDevelop3 - Unix Makefiles",
-                      "Kate - Ninja",
-                      "Sublime Text 2 - Ninja")
+                      "CodeLite - Ninja")
 
 generators_mac <- c(generators_linux,
                     "Xcode")

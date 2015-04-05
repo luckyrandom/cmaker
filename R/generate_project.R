@@ -11,6 +11,7 @@ sysname <- Sys.info()[['sysname']]
 ##' Get supported cmake generators.
 ##'
 ##' @return supported generators
+##' @export
 ##' @author Chenliang Xu
 ls_generators <- function() {
   switch(sysname,
@@ -27,6 +28,7 @@ post_generate_hook <- list()
 ##' @param dir the directory
 ##' @param generator the cmake generator to use
 ##' @param ... args pass to cmake
+##' @export
 ##' @author Chenliang Xu
 generate_project <- function(dir, generator,
                              ...) {

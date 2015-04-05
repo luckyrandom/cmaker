@@ -4,6 +4,7 @@
 ##' @param project project name to be created in cmake.
 ##' @param language programming lagnuage to be compiled.
 ##' @param cxx_standard cxx_standard used.
+##' @export
 ##' @author Chenliang Xu
 add_cmake <- function(dir,
                       project = "Project",

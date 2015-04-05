@@ -9,6 +9,7 @@
 ##' @title Load the package asis.
 ##' @param pkg package description, can be path or package name.
 ##' @inheritParams devtools::load_all
+##' @export
 ##' @author Chenliang Xu
 load_asis <- function(pkg = ".", reset = TRUE, export_all = TRUE) {
   ## TODO: This function should be a part of devtools. It's a gentle

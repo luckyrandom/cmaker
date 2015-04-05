@@ -6,12 +6,14 @@ generators_linux <- c("Unix Makefiles",
 generators_mac <- c(generators_linux,
                     "Xcode")
 
+sysname <- Sys.info()[['sysname']]
+
 ##' Get supported cmake generators.
 ##'
 ##' @return supported generators
 ##' @author Chenliang Xu
 ls_generators <- function() {
-  switch(Sys.info()[['sysname']],
+  switch(sysname,
          Windows= generators_windows,
          Linux  = generators_linux,
          Darwin = generators_mac)

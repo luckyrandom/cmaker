@@ -8,6 +8,7 @@
 ##' \code{\link{devtools::system_check}}
 ##' @return Invisible \code{TRUE} if the command succeeds, throws an error if
 ##' the command fails.
+##' @export
 ##' @author Chenliang Xu
 cmake <- function(options = "--version",
                   wd = getwd(),

@@ -5,6 +5,7 @@
 ##' @title Include path of package.
 ##' @param dir The directory of package.
 ##' @return The include path of package.
+##' @export
 ##' @author Chenliang Xu
 include_path <- function(dir = ".") {
     f <- file.path(dir, "DESCRIPTION")

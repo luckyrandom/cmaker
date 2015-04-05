@@ -1,3 +1,11 @@
+##' Add cmake files to the R package.
+##'
+##' @param dir the path of R package.
+##' @param project project name to be created in cmake.
+##' @param language programming lagnuage to be compiled.
+##' @param cxx_standard cxx_standard used.
+##' @export
+##' @author Chenliang Xu
 add_cmake <- function(dir,
                       project = "Project",
                       language = c("CXX", "C", "Fortran"),
@@ -17,5 +25,5 @@ add_cmake <- function(dir,
                    cxx_standard = cxx_standard)
   writeLines(template(readLines(system.file("templates/cmake/CMakeLists.txt", package = "RCMakeTemplate")),
                       settings),
-             file.path(dir, "cmake", "CMakeLists.txt"))  
+             file.path(dir, "cmake", "CMakeLists.txt"))
 }

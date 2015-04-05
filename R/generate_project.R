@@ -1,23 +1,20 @@
 generators_linux <- c("Unix Makefiles",
                       "Ninja",
-                      "Xcode",
                       "CodeBlocks - Ninja",
-                      "CodeLite - Ninja",
-                      "Eclipse CDT4 - Ninja",
-                      "KDevelop3",
-                      "KDevelop3 - Unix Makefiles",
-                      "Kate - Ninja",
-                      "Sublime Text 2 - Ninja")
+                      "CodeLite - Ninja")
 
 generators_mac <- c(generators_linux,
                     "Xcode")
 
+sysname <- Sys.info()[['sysname']]
+
 ##' Get supported cmake generators.
 ##'
 ##' @return supported generators
+##' @export
 ##' @author Chenliang Xu
 ls_generators <- function() {
-  switch(Sys.info()[['sysname']],
+  switch(sysname,
          Windows= generators_windows,
          Linux  = generators_linux,
          Darwin = generators_mac)
@@ -31,6 +28,7 @@ post_generate_hook <- list()
 ##' @param dir the directory
 ##' @param generator the cmake generator to use
 ##' @param ... args pass to cmake
+##' @export
 ##' @author Chenliang Xu
 generate_project <- function(dir, generator,
                              ...) {

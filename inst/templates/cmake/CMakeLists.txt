@@ -48,13 +48,13 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PKG_DIR}/src/)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_DEBUG ${PKG_DIR}/src/)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_RELEASE ${PKG_DIR}/src/)
 
-add_library(${PKG_NAME}_lib SHARED ${SOURCE_FILES})
-target_link_libraries(${PKG_NAME}_lib
+add_library(${PKG_NAME} SHARED ${SOURCE_FILES})
+target_link_libraries(${PKG_NAME}
   ${LIBR_LIBRARIES})
-set_property(TARGET ${PKG_NAME}_lib PROPERTY CXX_STANDARD @@cxx_standard@@)
+set_property(TARGET ${PKG_NAME} PROPERTY CXX_STANDARD @@cxx_standard@@)
 
 if (APPLE)
-  set_property(TARGET ${PKG_NAME}_lib PROPERTY PREFIX "")
-  set_property(TARGET ${PKG_NAME}_lib PROPERTY OUTPUT_NAME "${PKG_NAME}.so")
-  set_property(TARGET ${PKG_NAME}_lib PROPERTY SUFFIX "")
+  set_property(TARGET ${PKG_NAME} PROPERTY PREFIX "")
+  set_property(TARGET ${PKG_NAME} PROPERTY OUTPUT_NAME "${PKG_NAME}.so")
+  set_property(TARGET ${PKG_NAME} PROPERTY SUFFIX "")
 endif()

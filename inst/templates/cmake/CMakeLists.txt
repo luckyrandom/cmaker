@@ -58,3 +58,8 @@ if (APPLE)
   set_property(TARGET ${PKG_NAME} PROPERTY OUTPUT_NAME "${PKG_NAME}.so")
   set_property(TARGET ${PKG_NAME} PROPERTY SUFFIX "")
 endif()
+
+if (NOT CMAKE_BUILD_TYPE)
+  message(STATUS "No build type selected, default to Debug")
+  set(CMAKE_BUILD_TYPE Debug)
+endif()

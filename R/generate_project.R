@@ -48,4 +48,9 @@ generate_project <- function(dir, generator,
                       min(matched) - 1),
                file.path(proj_dir, ".cproject"))
   }
+
+  if (length(grep("^CodeBlocks", generator)) > 0) {
+    if (sysname == "Darwin")
+      warning("According to the descripton on download page, Code::Blocks for Mac is currently not as stable as are other ports, especially on Mountain Lion.")
+  }
 }

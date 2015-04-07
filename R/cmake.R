@@ -13,7 +13,7 @@
 cmake <- function(options = "--version",
                   wd = getwd(),
                   env_vars = NULL,
-                  cmake_command = "cmake",
+                  cmake_command = Sys.which("cmake"),
                   ...) {
   if (!command_exist(cmake_command)) stop("cmake command not found")
   devtools::in_dir(wd, devtools::system_check(cmake_command, options, env_vars, ...))

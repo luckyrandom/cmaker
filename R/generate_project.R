@@ -1,5 +1,6 @@
 generators_linux <- c("Unix Makefiles",
                       "Ninja",
+                      "Eclipse CDT4 - Ninja",
                       "CodeBlocks - Ninja",
                       "CodeLite - Ninja")
 
@@ -34,4 +35,17 @@ generate_project <- function(dir, generator,
   cmake_dir <- normalizePath(file.path(dir, "cmake"))
   proj_dir <- cmake_dir
   cmake(paste("-G", shQuote(generator), cmake_dir), proj_dir, ...)
+  if (length(grep("^Eclipse CDT4", generator)) > 0) {
+    ## Temperary fix for the bug of cmake Eclipse generator that
+    ## doesn't handle include path properly.
+    lines <- readLines(file.path(proj_dir, ".cproject"))
+    matched <- grep("<pathentry", readLines("inst/examples/rcppexample/cmake/.cproject"))
+    if(length(matched) == 0) stop("Can not find place to insert include path. Please report as an issue.")
+    writeLines(append(lines,
+                      paste0('<pathentry include="',
+                             include_path(dir),
+                             '" kind="inc" path="" system="true"/>'),
+                      min(matched) - 1),
+               file.path(proj_dir, ".cproject"))
+  }
 }

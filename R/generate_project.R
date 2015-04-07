@@ -31,6 +31,7 @@ ls_generators <- function() {
 generate_project <- function(dir, generator,
                              ...) {
   generator <- match.arg(generator, ls_generators())
-  cmake(paste("-G", shQuote(generator), "."), file.path(dir, "cmake"), ...)
-
+  cmake_dir <- normalizePath(file.path(dir, "cmake"))
+  proj_dir <- cmake_dir
+  cmake(paste("-G", shQuote(generator), cmake_dir), proj_dir, ...)
 }

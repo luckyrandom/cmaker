@@ -4,6 +4,7 @@
 ##' @title R package name.
 ##' @param dir The directory of package.
 ##' @return The package name.
+##' @export
 ##' @author Chenliang Xu
 pkg_name <- function(dir = ".") {
   pkg <- tools:::.split_description(tools:::.read_description(file.path(dir, 'DESCRIPTION')))$DESCRIPTION['Package']

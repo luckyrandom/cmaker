@@ -18,7 +18,7 @@ endif()
 
 execute_process(
   COMMAND ${LIBR_EXECUTABLE}
-  "--slave" "-e" "cat(RCMakeTemplate::pkg_name('${PKG_DIR}'))"
+  "--slave" "-e" "cat(cmaker::pkg_name('${PKG_DIR}'))"
   OUTPUT_VARIABLE PKG_NAME
   ERROR_VARIABLE  PKG_ERR
   )
@@ -26,7 +26,7 @@ message(STATUS "Detect R package: " ${PKG_NAME})
 
 execute_process(
   COMMAND ${LIBR_EXECUTABLE}
-  "--slave" "-e" "cat(RCMakeTemplate::include_path('${PKG_DIR}'))"
+  "--slave" "-e" "cat(cmaker::include_path('${PKG_DIR}'))"
   OUTPUT_VARIABLE PKG_INCLUDE_DIRS
   )
 include_directories(BEFORE ${LIBR_INCLUDE_DIRS})

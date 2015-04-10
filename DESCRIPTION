@@ -1,4 +1,4 @@
-Package: RCMakeTemplate
+Package: cmaker
 Type: Package
 Title: CMake tempelate for R package
 Version: 0.1

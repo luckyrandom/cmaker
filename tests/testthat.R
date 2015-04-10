@@ -1,4 +1,4 @@
 library(testthat)
-library(RCMakeTemplate)
+library(cmaker)
 
-test_check("RCMakeTemplate")
+test_check("cmaker")

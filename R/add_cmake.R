@@ -14,7 +14,7 @@ add_cmake <- function(dir,
     stop("Fail to find file DESCRIPTION. The directory seems not to include a R package.")
   if(file.exists(file.path(dir, "cmake")))
     stop("The directory cmake exits. We don't overwrite it.")
-  invisible(file.copy(from = system.file("templates/cmake", package = "RCMakeTemplate"),
+  invisible(file.copy(from = system.file("templates/cmake", package = "cmaker"),
                       to = file.path(dir),
                       recursive = TRUE))
 
@@ -23,7 +23,7 @@ add_cmake <- function(dir,
   settings <- list(project = project,
                    language = language,
                    cxx_standard = cxx_standard)
-  writeLines(template(readLines(system.file("templates/cmake/CMakeLists.txt", package = "RCMakeTemplate")),
+  writeLines(template(readLines(system.file("templates/cmake/CMakeLists.txt", package = "cmaker")),
                       settings),
              file.path(dir, "cmake", "CMakeLists.txt"))
 }

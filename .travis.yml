@@ -25,7 +25,7 @@ after_success:
 
 env:
   global:
-    secure: "WteE7/dyLk2gQduG29OsSfwSEn3nD3GSPOn16aOhXLgVwJKnjBcD3EtrJ2Z1RoQXw7ERSrkdxz+vpIBhSofcL0FaREMCzsPflB8lAGl1t4cApEj+Lx/N5TMw+7Whwmxdd5IK++FW33dxkBE22vkcTnlLusvK2OJ6IegxMure9V4="
+    secure: "J2eavX8meXVa22qOehk2J7+MISTHXvEDu/CvJeD5qe5E8Hp5GNWBQ8grev0Noj+DT/Aku0or/XDM72W33CU5bfqkQT+BAa7aVCThD1s+tKDg+c5ymIVzAxRJA7whZJcA+gkkNXkO2+qQM+CjKYqcjlniE1DwOLnelm6piVCtpno="
     
 branches:
   except:

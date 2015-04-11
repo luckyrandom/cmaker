@@ -35,6 +35,8 @@ generate_project <- function(dir, generator,
   cmake_dir <- normalizePath(file.path(dir, "cmake"))
   proj_dir <- cmake_dir
   cmake(paste("-G", shQuote(generator), cmake_dir), proj_dir, ...)
+  proj_name <- readLines(file.path(cmake_dir, "projectname"), n = 1, warn = FALSE)
+
   if (length(grep("^Eclipse CDT4", generator)) > 0) {
     ## Temperary fix for the bug of cmake Eclipse generator that
     ## doesn't handle include path properly.

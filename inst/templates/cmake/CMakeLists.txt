@@ -70,3 +70,5 @@ get_property(includepath DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY INCLUDE_
 foreach(dir ${includepath})
   file(APPEND includepath "${dir}\n")
 endforeach()
+
+file(WRITE projectname ${CMAKE_PROJECT_NAME})

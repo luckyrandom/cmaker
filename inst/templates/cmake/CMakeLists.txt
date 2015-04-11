@@ -29,7 +29,7 @@ message(STATUS "Detect R package: " ${PKG_NAME})
 
 execute_process(
   COMMAND ${LIBR_EXECUTABLE}
-  "--slave" "-e" "cat(cmaker::include_path('${PKG_DIR}'))"
+  "--slave" "-e" "cat(paste0(cmaker::include_path('${PKG_DIR}'), collapse = ';'))"
   OUTPUT_VARIABLE PKG_INCLUDE_DIRS
   RESULT_VARIABLE PKG_INCLUDE_RESULT
   )

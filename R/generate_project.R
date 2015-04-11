@@ -2,7 +2,8 @@ generators_linux <- c("Unix Makefiles",
                       "Ninja",
                       "Eclipse CDT4 - Ninja",
                       "CodeBlocks - Ninja",
-                      "CodeLite - Ninja")
+                      "CodeLite - Ninja",
+                      "Sublime Text 2 - Ninja")
 
 generators_mac <- c(generators_linux,
                     "Xcode")
@@ -54,5 +55,13 @@ generate_project <- function(dir, generator,
   if (length(grep("^CodeBlocks", generator)) > 0) {
     if (sysname == "Darwin")
       warning("According to the descripton on download page, Code::Blocks for Mac is currently not as stable as are other ports, especially on Mountain Lion.")
+  }
+
+  if (length(grep("^Sublime Text 2", generator)) > 0) {
+    proj <- jsonlite::fromJSON(file.path(proj_dir, paste0(proj_name, ".sublime-project")))
+    proj$settings$sublimeclang_options <- paste0("-I", readLines(file.path(cmake_dir, "includepath")))
+    proj$folders$path <- "../"
+    write(jsonlite::prettify(jsonlite::toJSON(proj)), file = file.path(proj_dir, paste0(proj_name, ".sublime-project")))
+    build_all <- grep(" - all$", proj$build_systems$name, value = TRUE)
   }
 }

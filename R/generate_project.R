@@ -51,7 +51,7 @@ generate_project <- function(dir, generator,
                       min(matched) - 1),
                file.path(proj_dir, ".cproject"))
   }
-
+  
   if (length(grep("^CodeBlocks", generator)) > 0) {
     if (sysname == "Darwin")
       warning("According to the descripton on download page, Code::Blocks for Mac is currently not as stable as are other ports, especially on Mountain Lion.")
@@ -63,5 +63,6 @@ generate_project <- function(dir, generator,
     proj$folders$path <- "../"
     write(jsonlite::prettify(jsonlite::toJSON(proj)), file = file.path(proj_dir, paste0(proj_name, ".sublime-project")))
     build_all <- grep(" - all$", proj$build_systems$name, value = TRUE)
+    message("The autocomplete depends on the SublimeClang plugin.")
   }
 }

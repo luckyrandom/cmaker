@@ -14,7 +14,7 @@ include_path <- function(dir = ".") {
     include <- character()
     if (!is.null(linkTo)) {
         lpkgs <- sapply(linkTo, function(x) x[[1L]])
-        paths <- find.package(lpkgs, quiet = TRUE)
+        paths <- sapply(lpkgs, function(pkg) find.package(pkg, quiet = FALSE))
         bpaths <- basename(paths)
         if (length(paths)) {
             have_vers <- (vapply(linkTo, length, 1L) >

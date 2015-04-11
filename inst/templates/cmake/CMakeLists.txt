@@ -20,15 +20,22 @@ execute_process(
   COMMAND ${LIBR_EXECUTABLE}
   "--slave" "-e" "cat(cmaker::pkg_name('${PKG_DIR}'))"
   OUTPUT_VARIABLE PKG_NAME
-  ERROR_VARIABLE  PKG_ERR
+  RESULT_VARIABLE PKG_RESULT
   )
+if(NOT PKG_RESULT EQUAL 0)
+  message( FATAL_ERROR "Fail to find package name")
+endif()
 message(STATUS "Detect R package: " ${PKG_NAME})
 
 execute_process(
   COMMAND ${LIBR_EXECUTABLE}
-  "--slave" "-e" "cat(cmaker::include_path('${PKG_DIR}'))"
+  "--slave" "-e" "cat(paste0(cmaker::include_path('${PKG_DIR}'), collapse = ';'))"
   OUTPUT_VARIABLE PKG_INCLUDE_DIRS
+  RESULT_VARIABLE PKG_INCLUDE_RESULT
   )
+if(NOT PKG_INCLUDE_RESULT EQUAL 0)
+  message( FATAL_ERROR "Fail to find package include path")
+endif()
 include_directories(BEFORE ${LIBR_INCLUDE_DIRS})
 include_directories(BEFORE ${PKG_INCLUDE_DIRS})
 include_directories(BEFORE "../inst/include/")
@@ -63,3 +70,12 @@ if (NOT CMAKE_BUILD_TYPE)
   message(STATUS "No build type selected, default to Debug")
   set(CMAKE_BUILD_TYPE Debug)
 endif()
+
+# print includepath to file
+file(WRITE includepath "")
+get_property(includepath DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY INCLUDE_DIRECTORIES)
+foreach(dir ${includepath})
+  file(APPEND includepath "${dir}\n")
+endforeach()
+
+file(WRITE projectname ${CMAKE_PROJECT_NAME})

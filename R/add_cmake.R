@@ -1,17 +1,21 @@
 ##' Add cmake files to the R package.
 ##'
 ##' @param dir the path of R package.
-##' @param project project name to be created in cmake.
+##' @param project project name to be created in cmake. Retrieve from
+##' DESCRIPTION file if it is not set.
 ##' @param language programming lagnuage to be compiled.
 ##' @param cxx_standard cxx_standard used.
 ##' @export
 ##' @author Chenliang Xu
 add_cmake <- function(dir,
-                      project = "Project",
+                      project,
                       language = c("CXX", "C", "Fortran"),
                       cxx_standard = c("11", "14", "98")) {
   if(!file.exists(file.path(dir, 'DESCRIPTION')))
     stop("Fail to find file DESCRIPTION. The directory seems not to include a R package.")
+  if(missing(project)) {
+    project <- pkg_name(dir)
+  }
   if(file.exists(file.path(dir, "cmake")))
     stop("The directory cmake exits. We don't overwrite it.")
   invisible(file.copy(from = system.file("templates/cmake", package = "cmaker"),

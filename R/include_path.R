@@ -31,7 +31,7 @@ include_path <- function(dir = ".") {
                                   sQuote(p), current, z$op, target, sQuote(pkgname)),
                          call. = FALSE, domain = NA)
             }
-            include <- paste(paste0(paths, "/include"), collapse = " ")
+            include <- c(include, paste0(paths, "/include"))
         }
     }
     include

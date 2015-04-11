@@ -63,3 +63,10 @@ if (NOT CMAKE_BUILD_TYPE)
   message(STATUS "No build type selected, default to Debug")
   set(CMAKE_BUILD_TYPE Debug)
 endif()
+
+# print includepath to file
+file(WRITE includepath "")
+get_property(includepath DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY INCLUDE_DIRECTORIES)
+foreach(dir ${includepath})
+  file(APPEND includepath "${dir}\n")
+endforeach()

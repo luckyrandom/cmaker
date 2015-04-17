@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.4)
-set(PKG_DIR ${CMAKE_CURRENT_SOURCE_DIR}/..)
+set(PKG_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 
 project(@@project@@ LANGUAGES @@language@@)
 
@@ -9,7 +9,7 @@ FILE(GLOB SOURCE_FILES
   ${PKG_DIR}/src/*.cc
   ${PKG_DIR}/src/*.cpp)
 
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/Modules)
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PKG_DIR}/cmake/modules)
 find_package(LibR)
 if(${LIBR_FOUND})
 else()
@@ -72,10 +72,10 @@ if (NOT CMAKE_BUILD_TYPE)
 endif()
 
 # print includepath to file
-file(WRITE includepath "")
+file(WRITE ${PKG_DIR}/cmake/settings/includepath "")
 get_property(includepath DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY INCLUDE_DIRECTORIES)
 foreach(dir ${includepath})
-  file(APPEND includepath "${dir}\n")
+  file(APPEND  ${PKG_DIR}/cmake/settings/includepath "${dir}\n")
 endforeach()
 
-file(WRITE projectname ${CMAKE_PROJECT_NAME})
+file(WRITE ${PKG_DIR}/cmake/settings/projectname ${CMAKE_PROJECT_NAME})

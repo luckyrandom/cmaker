@@ -27,8 +27,8 @@ include_path <- function(dir = ".") {
         target <- as.numeric_version(z$version)
         if (!do.call(z$op, list(as.numeric_version(current),
                                 target)))
-          stop(gettextf("package %s %s was found, but %s %s is required by %s",
-                        sQuote(p), current, z$op, target, sQuote(pkgname)),
+          stop(gettextf("package %s %s was found, but %s %s is required",
+                        sQuote(p), current, z$op, target),
                call. = FALSE, domain = NA)
       }
       include <- c(include, paste0(paths, "/include"))

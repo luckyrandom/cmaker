@@ -8,6 +8,8 @@ generators_linux <- c("Unix Makefiles",
 generators_mac <- c(generators_linux,
                     "Xcode")
 
+generators_windows <- character()
+
 sysname <- Sys.info()[['sysname']]
 
 ##' Get supported cmake generators.
@@ -62,7 +64,6 @@ generate_project <- function(dir, generator,
     proj$settings$sublimeclang_options <- paste0("-I", readLines(file.path(cmake_dir, "includepath")))
     proj$folders$path <- "../"
     write(jsonlite::prettify(jsonlite::toJSON(proj)), file = file.path(proj_dir, paste0(proj_name, ".sublime-project")))
-    build_all <- grep(" - all$", proj$build_systems$name, value = TRUE)
     message("The autocomplete depends on the SublimeClang plugin.")
   }
 

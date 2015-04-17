@@ -60,7 +60,7 @@ target_link_libraries(${PKG_NAME}
   ${LIBR_LIBRARIES})
 set_property(TARGET ${PKG_NAME} PROPERTY CXX_STANDARD @@cxx_standard@@)
 
-if (APPLE)
+if (NOT WIN32)
   set_property(TARGET ${PKG_NAME} PROPERTY PREFIX "")
   set_property(TARGET ${PKG_NAME} PROPERTY OUTPUT_NAME "${PKG_NAME}.so")
   set_property(TARGET ${PKG_NAME} PROPERTY SUFFIX "")

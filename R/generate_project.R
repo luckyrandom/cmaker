@@ -65,4 +65,35 @@ generate_project <- function(dir, generator,
     build_all <- grep(" - all$", proj$build_systems$name, value = TRUE)
     message("The autocomplete depends on the SublimeClang plugin.")
   }
+
+  if (length(grep("^CodeLite", generator)) > 0) {
+    proj <- xmlParse(file.path(proj_dir, paste0(proj_name, ".project")))
+    conf <- getNodeSet(proj, "/CodeLite_Project/Settings/Configuration[@Name='Debug']")[[1]]
+    completion <- newXMLNode("Completion",
+                             newXMLNode("ClangCmpFlagsC"),
+                             newXMLNode("ClangCmpFlags"),
+                             newXMLNode("ClangPP"),
+                             newXMLNode("SearchPaths",
+                                        paste(readLines(file.path(cmake_dir, "includepath")), collapse = "\n")),
+                             attrs = list(EnableCpp11="no"))
+    addChildren(conf, completion)
+    write(saveXML(proj), file = file.path(proj_dir, paste0(proj_name, ".project")))
+  }
+}
+
+create_xml_path <- function(xml_obj, path) {
+  if(length(getNodeSet(xml_obj, path)) > 0) return(NULL)
+  steps <- strsplit(path, "/")[[1]]
+  current_node <- xml_obj
+  for(step in steps) {
+    if (step == "") next
+    if (length(getNodeSet(current_node, paste0("/", step))) == 0) {
+      child <- newXMLNode(step)
+      addChildren(current_node, child)
+      current_node <- child
+    } else {
+      current_node <- getNodeSet(current_node, paste0("/", step))[[1]]
+    }
+  }
+  return(NULL)
 }

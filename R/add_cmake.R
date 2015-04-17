@@ -16,18 +16,17 @@ add_cmake <- function(dir,
   if(missing(project)) {
     project <- pkg_name(dir)
   }
-  if(file.exists(file.path(dir, "cmake")))
-    stop("The directory cmake exits. We don't overwrite it.")
+  if(file.exists(file.path(dir, "CMakeLists.txt")))
+    stop("CMakeLists.txt file exits. We will not overwrite it.")
   invisible(file.copy(from = system.file("templates/cmake", package = "cmaker"),
                       to = file.path(dir),
                       recursive = TRUE))
-
   language <- match.arg(language)
   cxx_standard <- match.arg(cxx_standard)
   settings <- list(project = project,
                    language = language,
                    cxx_standard = cxx_standard)
-  writeLines(template(readLines(system.file("templates/cmake/CMakeLists.txt", package = "cmaker")),
+  writeLines(template(readLines(system.file("templates/CMakeLists.txt", package = "cmaker")),
                       settings),
-             file.path(dir, "cmake", "CMakeLists.txt"))
+             file.path(dir, "CMakeLists.txt"))
 }

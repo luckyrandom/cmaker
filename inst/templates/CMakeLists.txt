@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8.4)
 set(PKG_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 
-project(@@project@@ LANGUAGES @@language@@)
+project(@@project@@ @@language@@)
 
 FILE(GLOB SOURCE_FILES
   ${PKG_DIR}/src/*.h

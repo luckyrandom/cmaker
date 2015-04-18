@@ -1,12 +1,12 @@
 cmake_version <- function() {
-  version_info <- system(paste(shQuote(cmake_path()), "--version"),
+  version_info <- system(paste(shQuote(cmaker_command_path("cmake")), "--version"),
                          intern = TRUE)
   version <- sub("(cmake version )((\\d+\\.)+\\d+).*", "\\2", version_info[[1]])
   numeric_version(version)
 }
 
 ninja_version <- function() {
-  version <- system(paste(shQuote(ninja_path()), "--version"),
+  version <- system(paste(shQuote(cmaker_command_path("ninja")), "--version"),
                          intern = TRUE)
   numeric_version(version)
 }

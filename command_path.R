@@ -1,2 +1,3 @@
-cmake_path <- function() getOption("cmaker.cmake.path", Sys.which("cmake"))
-ninja_path <- function() getOption("cmaker.ninja.path", Sys.which("ninja"))
+cmaker_command_path <- function(command)
+  getOption(sprintf("cmaker.%s.path", command),
+            Sys.which(command))

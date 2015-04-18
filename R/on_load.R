@@ -18,7 +18,7 @@ ninja_version <- function() {
   } else {
     packageStartupMessage("Error: Cannot find system program `cmake`.")
   }
-  if (!command_exist(ninja_path()) {
+  if (!command_exist(ninja_path())) {
     packageStartupMessage("Warning: Cannot find system program `ninja`, while it's required for most generated project.")
   }
 }

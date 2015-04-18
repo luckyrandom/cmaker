@@ -9,6 +9,10 @@ FILE(GLOB SOURCE_FILES
   ${PKG_DIR}/src/*.cc
   ${PKG_DIR}/src/*.cpp)
 
+list(REMOVE_ITEM
+  SOURCE_FILES
+  ${PKG_DIR}/src/RcppExports.cpp)
+
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PKG_DIR}/cmake/modules)
 find_package(LibR)
 if(${LIBR_FOUND})
@@ -55,7 +59,20 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PKG_DIR}/src/)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_DEBUG ${PKG_DIR}/src/)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_RELEASE ${PKG_DIR}/src/)
 
-add_library(${PKG_NAME} SHARED ${SOURCE_FILES})
+set(COMPILE_ATTRIBUTES @@compileAttributes@@)
+
+if(COMPILE_ATTRIBUTES)
+  ADD_CUSTOM_COMMAND(
+    OUTPUT ${PKG_DIR}/src/RcppExports.cpp
+    COMMAND ${LIBR_EXECUTABLE}
+    "--slave" "-e" "\"Rcpp::compileAttributes('${PKG_DIR}')\""
+    DEPENDS ${SOURCE_FILES}
+    )
+  add_library(${PKG_NAME} SHARED ${SOURCE_FILES} ${PKG_DIR}/src/RcppExports.cpp)
+else()
+  add_library(${PKG_NAME} SHARED ${SOURCE_FILES})
+endif()
+
 target_link_libraries(${PKG_NAME}
   ${LIBR_LIBRARIES})
 set_property(TARGET ${PKG_NAME} PROPERTY CXX_STANDARD @@cxx_standard@@)

@@ -12,13 +12,13 @@ ninja_version <- function() {
 }
 
 .onLoad <- function(libname, pkgname) {
-  if (command_exist(cmake_path())) {
-    if (cmake_version < "3.2")
+  if (command_exist(cmaker_command_path("cmake"))) {
+    if (cmake_version() < "3.2")
       packageStartupMessage("System program `cmake` is old. Update to the newest version if possbile")
   } else {
     packageStartupMessage("Error: Cannot find system program `cmake`.")
   }
-  if (!command_exist(ninja_path())) {
+  if (!command_exist(cmaker_command_path("ninja"))) {
     packageStartupMessage("Warning: Cannot find system program `ninja`, while it's required for most generated project.")
   }
 }

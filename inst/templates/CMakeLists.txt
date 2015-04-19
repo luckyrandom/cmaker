@@ -22,6 +22,25 @@ endif()
 
 execute_process(
   COMMAND ${LIBR_EXECUTABLE}
+  "--slave" "-e"
+  "cmaker::list_sources('${PKG_DIR}', out = '${PKG_DIR}/cmake/settings/source_files')")
+
+add_custom_command(
+  OUTPUT ${PKG_DIR}/cmake/settings/never_write
+  COMMAND ${LIBR_EXECUTABLE}
+  "--slave" "-e"
+  "cmaker::list_sources('${PKG_DIR}', out = '${PKG_DIR}/cmake/settings/source_files', \
+                       on_change = stop('Error: Detect change of list of source files. Rerun build to get it correct.'))"
+  VERBATIM)
+
+add_custom_target(list_sources ALL
+  DEPENDS ${PKG_DIR}/cmake/settings/never_write)
+
+configure_file(${PKG_DIR}/cmake/settings/source_files
+  ${PKG_DIR}/cmake/settings/source_files_who_care)
+
+execute_process(
+  COMMAND ${LIBR_EXECUTABLE}
   "--slave" "-e" "cat(cmaker::pkg_name('${PKG_DIR}'))"
   OUTPUT_VARIABLE PKG_NAME
   RESULT_VARIABLE PKG_RESULT

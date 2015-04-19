@@ -1,23 +1,35 @@
 cmake_minimum_required(VERSION 2.8.4)
+
+# Defalut -Wno-dev
+if(NOT DEFINED CMAKE_SUPPRESS_DEVELOPER_WARNINGS)
+  set(CMAKE_SUPPRESS_DEVELOPER_WARNINGS 1 CACHE INTERNAL "No dev warnings")
+endif()
+
 set(PKG_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 
 project(@@project@@ @@language@@)
-
-FILE(GLOB SOURCE_FILES
-  ${PKG_DIR}/src/*.h
-  ${PKG_DIR}/src/*.hpp
-  ${PKG_DIR}/src/*.cc
-  ${PKG_DIR}/src/*.cpp)
-
-list(REMOVE_ITEM
-  SOURCE_FILES
-  ${PKG_DIR}/src/RcppExports.cpp)
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PKG_DIR}/cmake/modules)
 find_package(LibR)
 if(${LIBR_FOUND})
 else()
   message(FATAL_ERROR "No R...")
+endif()
+
+execute_process(
+  COMMAND ${LIBR_EXECUTABLE}
+  "--slave" "-e" 
+  "cmaker::list_sources('${PKG_DIR}', out = TRUE, collapse = ';')"
+  OUTPUT_VARIABLE SOURCE_FILES
+  ERROR_VARIABLE SOURCE_FILES_ERROR
+  RESULT_VARIABLE SOURCE_FILES_RESULT
+  )
+message(AUTHOR_WARNING
+  "SOURCE_FILES : ${SOURCE_FILES}")
+message(AUTHOR_WARNING
+  "SOURCE_FILES_ERROR : ${SOURCE_FILES_ERROR}")
+if(NOT SOURCE_FILES_RESULT EQUAL 0)
+  message( FATAL_ERROR "Fail to list source files")
 endif()
 
 execute_process(

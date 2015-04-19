@@ -15,7 +15,7 @@ character file name, to print result to the file.}
 \item{collapse}{character to separate results for printing}
 }
 \value{
-A list of source file names
+An invisible list of source file names
 }
 \description{
 List source files of package

@@ -93,9 +93,12 @@ else()
   add_dependencies(${PKG_NAME} list_sources)
 endif()
 
+set(CXX_STANDARD @@cxx_standard@@)
+
 target_link_libraries(${PKG_NAME}
   ${LIBR_LIBRARIES})
-set_property(TARGET ${PKG_NAME} PROPERTY CXX_STANDARD @@cxx_standard@@)
+set_property(TARGET ${PKG_NAME} PROPERTY CXX_STANDARD ${CXX_STANDARD})
+file(WRITE ${PKG_DIR}/cmake/settings/cxx_standard ${CXX_STANDARD})
 
 if (NOT WIN32)
   set_property(TARGET ${PKG_NAME} PROPERTY PREFIX "")

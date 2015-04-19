@@ -74,6 +74,8 @@ generate_project <- function(dir, IDE,
   }
 
   if (length(grep("^CodeLite", IDE)) > 0) {
+    cxx_standard <- scan(setting_file(dir, "cxx_standard"), integer())
+    enable_cpp11 <- if(cxx_standard %in% c(11, 14)) {"yes"} else {"no"}
     proj <- XML::xmlParse(file.path(proj_dir, paste0(proj_name, ".project")))
     conf <- XML::getNodeSet(proj, "/CodeLite_Project/Settings/Configuration[@Name='Debug']")[[1]]
     newXMLNode <- XML::newXMLNode
@@ -83,7 +85,7 @@ generate_project <- function(dir, IDE,
                              newXMLNode("ClangPP"),
                              newXMLNode("SearchPaths",
                                         paste(readLines(setting_file(dir, "includepath")), collapse = "\n")),
-                             attrs = list(EnableCpp11="no"))
+                             attrs = list(EnableCpp11 = enable_cpp11))
     XML::addChildren(conf, completion)
     write(XML::saveXML(proj), file = file.path(proj_dir, paste0(proj_name, ".project")))
   }

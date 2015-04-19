@@ -1,27 +1,27 @@
-generators_linux <- c("Unix Makefiles",
+IDEs_linux <- c("Unix Makefiles",
                       "Ninja",
                       "Eclipse CDT4 - Ninja",
                       "CodeBlocks - Ninja",
                       "CodeLite - Ninja",
                       "Sublime Text 2 - Ninja")
 
-generators_mac <- c(generators_linux,
+IDEs_mac <- c(IDEs_linux,
                     "Xcode")
 
-generators_windows <- character()
+IDEs_windows <- character()
 
 sysname <- Sys.info()[['sysname']]
 
-##' Get supported cmake generators.
+##' Get supported cmake IDEs.
 ##'
-##' @return supported generators
+##' @return supported IDEs
 ##' @export
 ##' @author Chenliang Xu
-ls_generators <- function() {
+ls_IDEs <- function() {
   switch(sysname,
-         Windows= generators_windows,
-         Linux  = generators_linux,
-         Darwin = generators_mac)
+         Windows= IDEs_windows,
+         Linux  = IDEs_linux,
+         Darwin = IDEs_mac)
 }
 
 setting_file <- function(pkg_dir, name) {
@@ -32,22 +32,22 @@ setting_file <- function(pkg_dir, name) {
 ##'
 ##' Call cmake to generate project file for IDE.
 ##' @param dir the directory
-##' @param generator the cmake generator to use
+##' @param IDE the IDE to generate. It's the same as cmake generator.
 ##' @param ... args pass to cmake
 ##' @export
 ##' @author Chenliang Xu
-generate_project <- function(dir, generator,
+generate_project <- function(dir, IDE,
                              ...) {
-  generator <- match.arg(generator, ls_generators())
+  IDE <- match.arg(IDE, ls_IDEs())
   cmake_dir <- normalizePath(dir)
   proj_dir <- file.path(dir, "proj")
   dir.create(proj_dir, recursive = TRUE)
   proj_dir <- normalizePath(file.path(dir, "proj"))
-  cmake(paste("-G", shQuote(generator), cmake_dir), proj_dir, ...)
+  cmake(paste("-G", shQuote(IDE), cmake_dir), proj_dir, ...)
   proj_name <- readLines(setting_file(dir, "projectname"), n = 1, warn = FALSE)
 
-  if (length(grep("^Eclipse CDT4", generator)) > 0) {
-    ## Temperary fix for the bug of cmake Eclipse generator that
+  if (length(grep("^Eclipse CDT4", IDE)) > 0) {
+    ## Temperary fix for the bug of cmake Eclipse IDE that
     ## doesn't handle include path properly.
     lines <- readLines(file.path(proj_dir, ".cproject"))
     matched <- grep("<pathentry", readLines("inst/examples/rcppexample/cmake/.cproject"))
@@ -60,12 +60,12 @@ generate_project <- function(dir, generator,
                file.path(proj_dir, ".cproject"))
   }
   
-  if (length(grep("^CodeBlocks", generator)) > 0) {
+  if (length(grep("^CodeBlocks", IDE)) > 0) {
     if (sysname == "Darwin")
       warning("According to the descripton on download page, Code::Blocks for Mac is currently not as stable as are other ports, especially on Mountain Lion.")
   }
 
-  if (length(grep("^Sublime Text 2", generator)) > 0) {
+  if (length(grep("^Sublime Text 2", IDE)) > 0) {
     proj <- jsonlite::fromJSON(file.path(proj_dir, paste0(proj_name, ".sublime-project")))
     proj$settings$sublimeclang_options <- paste0("-I", readLines(setting_file(dir, "includepath")))
     proj$folders$path <- "../"
@@ -73,7 +73,7 @@ generate_project <- function(dir, generator,
     message("The autocomplete depends on the SublimeClang plugin.")
   }
 
-  if (length(grep("^CodeLite", generator)) > 0) {
+  if (length(grep("^CodeLite", IDE)) > 0) {
     proj <- XML::xmlParse(file.path(proj_dir, paste0(proj_name, ".project")))
     conf <- XML::getNodeSet(proj, "/CodeLite_Project/Settings/Configuration[@Name='Debug']")[[1]]
     newXMLNode <- XML::newXMLNode

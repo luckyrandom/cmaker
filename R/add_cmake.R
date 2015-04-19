@@ -9,7 +9,7 @@
 ##' @author Chenliang Xu
 add_cmake <- function(dir,
                       project,
-                      language = c("CXX", "C", "Fortran"),
+                      language = c("CXX", "C"),
                       cxx_standard = c("11", "14", "98"),
                       compileAttributes = TRUE) {
   if(!file.exists(file.path(dir, 'DESCRIPTION')))

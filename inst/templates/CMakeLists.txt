@@ -85,11 +85,12 @@ if(COMPILE_ATTRIBUTES)
     OUTPUT ${PKG_DIR}/src/RcppExports.cpp
     COMMAND ${LIBR_EXECUTABLE}
     "--slave" "-e" "\"Rcpp::compileAttributes('${PKG_DIR}')\""
-    DEPENDS ${SOURCE_FILES}
+    DEPENDS ${SOURCE_FILES} list_sources
     )
   add_library(${PKG_NAME} SHARED ${SOURCE_FILES} ${PKG_DIR}/src/RcppExports.cpp)
 else()
   add_library(${PKG_NAME} SHARED ${SOURCE_FILES})
+  add_dependencies(${PKG_NAME} list_sources)
 endif()
 
 target_link_libraries(${PKG_NAME}

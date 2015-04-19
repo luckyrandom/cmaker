@@ -4,12 +4,12 @@
 \alias{generate_project}
 \title{Generate project file for IDE.}
 \usage{
-generate_project(dir, generator, ...)
+generate_project(dir, IDE, ...)
 }
 \arguments{
 \item{dir}{the directory}
 
-\item{generator}{the cmake generator to use}
+\item{IDE}{the IDE to generate. It's the same as cmake generator.}
 
 \item{...}{args pass to cmake}
 }

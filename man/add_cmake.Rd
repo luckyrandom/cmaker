@@ -4,8 +4,8 @@
 \alias{add_cmake}
 \title{Add cmake files to the R package.}
 \usage{
-add_cmake(dir, project, language = c("CXX", "C", "Fortran"),
-  cxx_standard = c("11", "14", "98"), compileAttributes = TRUE)
+add_cmake(dir, project, language = c("CXX", "C"), cxx_standard = c("11",
+  "14", "98"), compileAttributes = TRUE)
 }
 \arguments{
 \item{dir}{the path of R package.}

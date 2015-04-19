@@ -40,6 +40,9 @@ load_asis <- function(pkg = ".", reset = TRUE, export_all = TRUE) {
     out$code <- devtools:::load_code(pkg)
     devtools:::register_s3(pkg)
     out$dll <- devtools:::load_dll(pkg)
+    if (length(out$dll) == 0) {
+      warning("No dynamic library found. Is it compiled correctly?")
+    }
     devtools:::run_pkg_hook(pkg, "load")
     devtools:::run_ns_load_actions(pkg)
     devtools:::run_user_hook(pkg, "load")

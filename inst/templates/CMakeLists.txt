@@ -1,4 +1,10 @@
 cmake_minimum_required(VERSION 2.8.4)
+
+# Defalut -Wno-dev
+if(NOT DEFINED CMAKE_SUPPRESS_DEVELOPER_WARNINGS)
+  set(CMAKE_SUPPRESS_DEVELOPER_WARNINGS 1 CACHE INTERNAL "No dev warnings")
+endif()
+
 set(PKG_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 
 project(@@project@@ @@language@@)

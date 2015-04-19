@@ -10,9 +10,10 @@
 add_cmake <- function(dir,
                       project,
                       language = c("CXX", "C", "Fortran"),
-                      cxx_standard = c("11", "14", "98")) {
+                      cxx_standard = c("11", "14", "98"),
+                      compileAttributes = TRUE) {
   if(!file.exists(file.path(dir, 'DESCRIPTION')))
-    stop("Fail to find file DESCRIPTION. The directory seems not to include a R package.")
+    stop("Fail to find file DESCRIPTION. The directory seems not to be a R package.")
   if(missing(project)) {
     project <- pkg_name(dir)
   }
@@ -25,7 +26,8 @@ add_cmake <- function(dir,
   cxx_standard <- match.arg(cxx_standard)
   settings <- list(project = project,
                    language = language,
-                   cxx_standard = cxx_standard)
+                   cxx_standard = cxx_standard,
+                   compileAttributes = compileAttributes)
   writeLines(template(readLines(system.file("templates/CMakeLists.txt", package = "cmaker")),
                       settings),
              file.path(dir, "CMakeLists.txt"))

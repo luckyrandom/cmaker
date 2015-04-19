@@ -5,7 +5,7 @@
 \title{Run cmake within R}
 \usage{
 cmake(options = "--version", wd = getwd(), env_vars = NULL,
-  cmake_command = Sys.which("cmake"), ...)
+  cmake_command = cmaker_command_path("cmake"), ...)
 }
 \arguments{
 \item{options}{a character vector of options pass to cmake.}

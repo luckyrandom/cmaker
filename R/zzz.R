@@ -11,7 +11,7 @@ ninja_version <- function() {
   numeric_version(version)
 }
 
-.onLoad <- function(libname, pkgname) {
+.onAttach <- function(libname, pkgname) {
   if (command_exist(cmaker_command_path("cmake"))) {
     if (cmake_version() < "3.2")
       packageStartupMessage("System program `cmake` is old. Update to the newest version if possbile")

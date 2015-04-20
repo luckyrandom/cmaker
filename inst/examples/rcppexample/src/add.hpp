@@ -1,7 +1,7 @@
 #ifndef ADD_HPP
 #define ADD_HPP
 
-double add(double x, double y) {
+inline double my_add(double x, double y) {
   return x + y;
 }
 

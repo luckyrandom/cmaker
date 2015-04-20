@@ -1,4 +1,3 @@
-
 #include <Rcpp.h>
 using namespace Rcpp;
 
@@ -6,9 +5,8 @@ using namespace Rcpp;
 
 // [[Rcpp::export]]
 List rcpp_hello_world() {
-
-    CharacterVector x = CharacterVector::create( "foo", "bar" )  ;
-    NumericVector y   = NumericVector::create( 0.0, 1.0, add(3.5, 4.8)) ;
-    List z            = List::create( _["x"] = x, _["y"] = y ) ;
-    return z ;
+    NumericVector x = NumericVector::create(3, 5);
+    x.push_back(my_add(3, 5));
+    int size = x.size();
+    return List::create(x, size);
 }

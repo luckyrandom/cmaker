@@ -1,13 +1,15 @@
 Package: cmaker
 Type: Package
-Title: CMake tempelate for R package
+Title: Setup C/C++ develop environment with cmake
 Version: 0.1
 Date: 2015-03-03
 Author: Chenliang Xu <luckyrand@gmail.com>
 Maintainer: Chenliang Xu <luckyrand@gmail.com>
-Description: CMake tempelate for R package.
+Description: Powered by CMake, cmaker setups C/C++ develop environment
+             for R package, to enjoy auto-complete, parallel compiling and
+             other features of IDE.
 Imports: devtools (>= 1.7.0.9000), jsonlite, XML
-Sugguests: Rcpp
+Suggests: Rcpp, testthat
 License: MIT + file LICENSE
 roclets: c("namespace", "rd")
-Suggests: testthat
+

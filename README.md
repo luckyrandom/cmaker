@@ -5,6 +5,7 @@ package, to enjoy auto-complete, debug, parallel compiling and other
 features of IDE. Not convinced? Watch Xcode in action and give it a
 try. If not satisfied, just delete `CMakeList.txt`, `proj/` and
 `cmake`. Testing, suggestion, and pull request are welcome.
+
 ![](https://raw.githubusercontent.com/luckyrandom/cmaker/master-src/gifs/xcode-rcpp.gif)
 
 ## Usage

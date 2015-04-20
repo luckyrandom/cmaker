@@ -9,7 +9,7 @@ Description: Powered by CMake, cmaker setups C/C++ develop environment
              for R package, to enjoy auto-complete, parallel compiling and
              other features of IDE.
 Imports: devtools (>= 1.7.0.9000), jsonlite, XML
-Sugguests: Rcpp, testthat
+Suggests: Rcpp, testthaat
 License: MIT + file LICENSE
 roclets: c("namespace", "rd")
 

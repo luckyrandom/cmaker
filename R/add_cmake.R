@@ -5,6 +5,8 @@
 ##' DESCRIPTION file if it is not set.
 ##' @param language programming lagnuage to be compiled.
 ##' @param cxx_standard cxx_standard used.
+##' @param compileAttributes logical value indicate whether
+##' compileAttributes should be called before compiling.
 ##' @export
 ##' @author Chenliang Xu
 add_cmake <- function(dir,

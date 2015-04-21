@@ -16,6 +16,9 @@ DESCRIPTION file if it is not set.}
 \item{language}{programming lagnuage to be compiled.}
 
 \item{cxx_standard}{cxx_standard used.}
+
+\item{compileAttributes}{logical value indicate whether
+compileAttributes should be called before compiling.}
 }
 \description{
 Add cmake files to the R package.

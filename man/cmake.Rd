@@ -17,7 +17,7 @@ cmake(options = "--version", wd = getwd(), env_vars = NULL,
 \item{cmake_command}{the name or the path of cmake command in the system.}
 
 \item{...}{additional arguments passed to
-\code{\link{devtools::system_check}}}
+\code{devtools::system_check}}
 }
 \value{
 Invisible \code{TRUE} if the command succeeds, throws an error if

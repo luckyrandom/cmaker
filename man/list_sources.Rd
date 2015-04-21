@@ -2,23 +2,26 @@
 % Please edit documentation in R/list_sources.R
 \name{list_sources}
 \alias{list_sources}
-\title{List source files of package}
+\title{List C/C++ source files of package}
 \usage{
 list_sources(dir, out, collapse = "\\n", on_change = NULL)
 }
 \arguments{
 \item{dir}{the directory of package}
 
-\item{out}{Set to logical true to print resutls on screen; set a
+\item{out}{Set to logical true to print results on screen; set a
 character file name, to print result to the file.}
 
 \item{collapse}{character to separate results for printing}
+
+\item{on_change}{the expression to evaluate if the list of source
+files is different from the value stored in `out` file}
 }
 \value{
 An invisible list of source file names
 }
 \description{
-List source files of package
+List C/C++ source files of package
 }
 \author{
 Chenliang Xu

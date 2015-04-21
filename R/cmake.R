@@ -5,7 +5,7 @@
 ##' @param env_vars environment variables to set before running the command.
 ##' @param cmake_command the name or the path of cmake command in the system.
 ##' @param ... additional arguments passed to
-##' \code{\link{devtools::system_check}}
+##' \code{devtools::system_check}
 ##' @return Invisible \code{TRUE} if the command succeeds, throws an error if
 ##' the command fails.
 ##' @export

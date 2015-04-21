@@ -1,9 +1,11 @@
-##' List source files of package
+##' List C/C++ source files of package
 ##'
 ##' @param dir the directory of package
-##' @param out Set to logical true to print resutls on screen; set a
+##' @param out Set to logical true to print results on screen; set a
 ##' character file name, to print result to the file.
 ##' @param collapse character to separate results for printing
+##' @param on_change the expression to evaluate if the list of source
+##' files is different from the value stored in `out` file
 ##' @return An invisible list of source file names
 ##' @export
 ##' @author Chenliang Xu

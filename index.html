@@ -82,6 +82,7 @@ margin-bottom: 40px;
 <p>You may copy the example from <code>cmaker</code> to set a playground with the following R command</p>
 <pre class="r"><code>file.copy(from = system.file(&quot;examples/rcppexample&quot;, package = &quot;cmaker&quot;),
           to = &quot;.&quot;, recursive = TRUE)</code></pre>
+<p><code>cmaker</code> only take care of the C/C++ source files, and R files should be edited in other editors, such as <a href="http://www.rstudio.com/">RStudio</a> or <a href="http://ess.r-project.org/">Emacs/ESS</a>.</p>
 <ul>
 <li><code>ls_IDEs()</code> to get recommend IDEs for your system.</li>
 <li><code>add_cmake(&quot;pkg_dir&quot;, language = &quot;CXX&quot;, cxx_standard = &quot;98&quot;,   compileAttributes = TRUE)</code> to generate cmake files for the R package.</li>

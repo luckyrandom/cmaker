@@ -93,7 +93,7 @@ create_xml_path <- function(xml_obj, path) {
   if(length(XML::getNodeSet(xml_obj, path)) > 0) return(NULL)
   steps <- strsplit(path, "/")[[1]]
   current_node <- xml_obj
-  for(step in steps) {
+  for (step in steps) {
     if (step == "") next
     if (length(XML::getNodeSet(current_node, paste0("/", step))) == 0) {
       child <- XML::newXMLNode(step)

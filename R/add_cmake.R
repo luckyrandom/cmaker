@@ -14,7 +14,7 @@ add_cmake <- function(dir,
                       language = c("CXX", "C"),
                       cxx_standard = c("11", "14", "98"),
                       compileAttributes = TRUE) {
-  if(!file.exists(file.path(dir, 'DESCRIPTION')))
+  if(!file.exists(file.path(dir, "DESCRIPTION")))
     stop("Fail to find file DESCRIPTION. The directory seems not to be a R package.")
   if(missing(project)) {
     project <- pkg_name(dir)

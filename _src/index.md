@@ -36,6 +36,10 @@ file.copy(from = system.file("examples/rcppexample", package = "cmaker"),
           to = ".", recursive = TRUE)
 ```
 
+`cmaker` only take care of the C/C++ source files, and R files should
+be edited in other editors, such as [RStudio](http://www.rstudio.com/)
+or [Emacs/ESS](http://ess.r-project.org/).
+
 - `ls_IDEs()` to get recommend IDEs for your system.
 - `add_cmake("pkg_dir", language = "CXX", cxx_standard = "98",
   compileAttributes = TRUE)` to generate cmake files for the R

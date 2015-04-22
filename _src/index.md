@@ -5,6 +5,7 @@ title: "cmaker : setup C/C++ develop environment for R package"
 <style>
 body {
 margin-top: 40px;
+margin-bottom: 40px;
 }
 </style>
 

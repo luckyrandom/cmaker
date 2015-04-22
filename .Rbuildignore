@@ -2,4 +2,3 @@
 .gitignore
 .travis.yml
 deploy.sh
-gifs/

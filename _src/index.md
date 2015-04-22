@@ -47,8 +47,7 @@ file.copy(from = system.file("examples/rcppexample", package = "cmaker"),
 
 # Install
 
-## Windows is not supported yet
-Will be supported soon. Please stay tuned.
+__Windows is not supported yet due to complexity of compiling R packages in Windows. Will be supported soon. Please stay tuned.__
 
 ## System requirements
 

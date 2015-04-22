@@ -69,6 +69,10 @@ body {
 margin-top: 40px;
 margin-bottom: 40px;
 }
+code {
+white-space: pre-wrap;
+word-wrap: normal;
+}
 </style>
 
 <a href="https://twitter.com/share" class="twitter-share-button" data-text="#cmaker : setup C/C++ develop environment for R package" data-via="luckyrand" data-hashtags="rstats">Tweet</a>
@@ -84,12 +88,12 @@ margin-bottom: 40px;
           to = &quot;.&quot;, recursive = TRUE)</code></pre>
 <p><code>cmaker</code> only take care of the C/C++ source files, and R files should be edited in other editors, such as <a href="http://www.rstudio.com/">RStudio</a> or <a href="http://ess.r-project.org/">Emacs/ESS</a>.</p>
 <ul>
-<li><code>ls_IDEs()</code> to get recommend IDEs for your system.</li>
-<li><code>add_cmake(&quot;pkg_dir&quot;, language = &quot;CXX&quot;, cxx_standard = &quot;98&quot;,   compileAttributes = TRUE)</code> to generate cmake files for the R package.</li>
-<li><code>generate_project(&quot;pkg_dir&quot;, &quot;IDE_name&quot;)</code> to generate project for your preferred IDE.</li>
+<li><code class="r">ls_IDEs()</code> to get recommend IDEs for your system.</li>
+<li><code class="r">add_cmake(&quot;pkg_dir&quot;, language = &quot;CXX&quot;, cxx_standard = &quot;98&quot;, compileAttributes = TRUE)</code> to generate cmake files for the R package.</li>
+<li><code class="r">generate_project(&quot;pkg_dir&quot;, &quot;IDE_name&quot;)</code> to generate project for your preferred IDE.</li>
 <li>Open IDE and enjoy.</li>
 <li>When you are ready, build within IDE.</li>
-<li>Call <code>load_asis(&quot;pkg_dir&quot;)</code> to load the package. <code>load_asis</code> works the same way as <code>devtools::load_all</code>, but assuming the dynamic library has been built properly.</li>
+<li>Call <code class="r">load_asis(&quot;pkg_dir&quot;)</code> to load the package. <code class="r">load_asis</code> works the same way as <code>devtools::load_all</code>, but assuming the dynamic library has been built properly.</li>
 </ul>
 </div>
 <div id="install" class="section level1">
@@ -97,12 +101,12 @@ margin-bottom: 40px;
 <p><strong>Windows is not supported yet due to complexity of compiling R packages in Windows. Will be supported soon. Please stay tuned.</strong></p>
 <div id="system-requirements" class="section level2">
 <h2>System requirements</h2>
-<p><code>cmaker</code> depends on <a href="http://www.cmake.org">CMake</a> and <a href="https://martine.github.io/ninja/">ninja</a>. The newest versions are recommended.</p>
+<p><code>r cmaker</code> depends on <a href="http://www.cmake.org">CMake</a> and <a href="https://martine.github.io/ninja/">ninja</a>. The newest versions are recommended.</p>
 <ul>
 <li><p>Mac users may install them through <a href="https://www.macports.org/">MacPorts</a> or <a href="http://brew.sh/">Homebrew</a>, with command</p>
 <pre class="bash"><code>port install cmake ninja</code></pre>
 <p>or</p>
-<pre><code>brew install cmake ninja</code></pre></li>
+<pre class="bash"><code>brew install cmake ninja</code></pre></li>
 <li><p>Linux users may install them through package management tools. You may need <a href="https://launchpad.net/ubuntu/+ppas">PPA</a> or something similar to install the newest version.</p></li>
 </ul>
 </div>

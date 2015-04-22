@@ -7,6 +7,10 @@ body {
 margin-top: 40px;
 margin-bottom: 40px;
 }
+code {
+white-space: pre-wrap;
+word-wrap: normal;
+}
 </style>
 
 <a href="https://twitter.com/share" class="twitter-share-button" data-text="#cmaker : setup C/C++ develop environment for R package" data-via="luckyrand" data-hashtags="rstats">Tweet</a>
@@ -40,14 +44,14 @@ file.copy(from = system.file("examples/rcppexample", package = "cmaker"),
 be edited in other editors, such as [RStudio](http://www.rstudio.com/)
 or [Emacs/ESS](http://ess.r-project.org/).
 
-- `ls_IDEs()` to get recommend IDEs for your system.
+- `ls_IDEs()`{.r} to get recommend IDEs for your system.
 - `add_cmake("pkg_dir", language = "CXX", cxx_standard = "98",
-  compileAttributes = TRUE)` to generate cmake files for the R
-  package.
-- `generate_project("pkg_dir", "IDE_name")` to generate project for your preferred IDE.
+compileAttributes = TRUE)`{.r} to generate cmake files for the R
+package.
+- `generate_project("pkg_dir", "IDE_name")`{.r} to generate project for your preferred IDE.
 - Open IDE and enjoy.
 - When you are ready, build within IDE.
-- Call `load_asis("pkg_dir")` to load the package. `load_asis` works
+- Call `load_asis("pkg_dir")`{.r} to load the package. `load_asis`{.r} works
   the same way as `devtools::load_all`, but assuming the dynamic
   library has been built properly.
 
@@ -57,7 +61,7 @@ __Windows is not supported yet due to complexity of compiling R packages in Wind
 
 ## System requirements
 
-`cmaker` depends on [CMake](http://www.cmake.org) and
+`r cmaker` depends on [CMake](http://www.cmake.org) and
 [ninja](https://martine.github.io/ninja/). The newest versions are
 recommended.
 
@@ -68,7 +72,7 @@ through [MacPorts](https://www.macports.org/) or
 port install cmake ninja
 ```
 or
-```
+```bash
 brew install cmake ninja
 ```
 - Linux users may install them through package management tools. You

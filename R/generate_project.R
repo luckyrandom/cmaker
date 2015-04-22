@@ -1,12 +1,10 @@
-IDEs_linux <- c("Unix Makefiles",
-                      "Ninja",
-                      "Eclipse CDT4 - Ninja",
-                      "CodeBlocks - Ninja",
-                      "CodeLite - Ninja",
-                      "Sublime Text 2 - Ninja")
+IDEs_linux <- c("CodeBlocks - Ninja",
+                "CodeLite - Ninja",
+                "Sublime Text 2 - Ninja")
 
-IDEs_mac <- c(IDEs_linux,
-                    "Xcode")
+IDEs_mac <- c("CodeLite - Ninja",
+              "Sublime Text 2 - Ninja",
+              "Xcode")
 
 IDEs_windows <- character()
 

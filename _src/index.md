@@ -75,7 +75,7 @@ brew install cmake ninja
 yet. Install newest `devtools` from github, and then install `cmaker`
 from github. The following R script installs them automatically.
 
-## Mac and Linux
+- Mac and Linux
 ```r
 if (! "devtools" %in% installed.packages())
   install.packages("devtools")

@@ -1,3 +1,9 @@
+<style>
+body {
+margin-top: 40px;
+}
+</style>
+
 # cmaker
 
 Powered by `CMake`, `cmaker` setups C/C++ develop environment for R

@@ -11,10 +11,10 @@
 ##' @author Chenliang Xu
 list_sources <- function(dir, out, collapse = "\n", on_change = NULL) {
   sources <- c(list.files(file.path(dir, "src"),
-                          pattern = '.*\\.(c|cpp|cc|h|hpp)$',
+                          pattern = ".*\\.(c|cpp|cc|h|hpp)$",
                           full.names = TRUE, recursive = TRUE),
                list.files(file.path(dir, "inst", "include"),
-                          pattern = '.*\\.(c|cpp|cc|h|hpp)$',
+                          pattern = ".*\\.(c|cpp|cc|h|hpp)$",
                           full.names = TRUE, recursive = TRUE))
   rcpp_exports <- file.path(dir, "src", "RcppExports.cpp")
   sources <- sources[sources != rcpp_exports]

@@ -7,7 +7,7 @@
 ##' @export
 ##' @author Chenliang Xu
 pkg_name <- function(dir = ".") {
-  pkg <- tools:::.split_description(tools:::.read_description(file.path(dir, 'DESCRIPTION')))$DESCRIPTION['Package']
-  if(is.na(pkg)) stop('Package name not found');
+  pkg <- tools:::.split_description(tools:::.read_description(file.path(dir, "DESCRIPTION")))$DESCRIPTION["Package"]
+  if(is.na(pkg)) stop("Package name not found");
   pkg
 }

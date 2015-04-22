@@ -80,9 +80,9 @@ from github. The following R script installs them automatically.
 if (! "devtools" %in% installed.packages())
   install.packages("devtools")
 if (packageVersion("devtools") < "1.7.0.9000") {
-  ## The head of master branch is borken at time of writting. Install
-  ## devtools 1.7.0.9000
-  devtools::install_github("hadley/devtools", "4d0964a1")
+  ## The head of master branch is borken at time of writting.
+  ## Install devtools 1.7.0.9000
+  devtools::install_github("hadley/devtools", ref = "4d0964a1")
 }
 devtools::install_github("luckyrandom/cmaker")
 ```

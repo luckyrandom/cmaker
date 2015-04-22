@@ -15,9 +15,10 @@ margin-bottom: 40px;
 Powered by `CMake`, the R package `cmaker` setups C/C++ develop
 environment for R package, to enjoy auto-complete, code navigation,
 parallel compiling and other features of IDE. Not convinced? Watch
-Xcode in action and give it a try. If not satisfied, just delete
-`CMakeList.txt`, `proj/` and `cmake`. Testing, suggestion, and pull
-request are welcome.
+Xcode in action and give it a try. All the generated files are stored
+in sub-directory `proj/` and `cmake/` besides `CMakeList.txt` in
+package root directory, so it can be cleaned easily if not
+satisfied. Testing, suggestion, and pull request are welcome.
 
 ![](./gifs/xcode-rcpp.gif)
 

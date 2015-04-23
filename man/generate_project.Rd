@@ -4,17 +4,18 @@
 \alias{generate_project}
 \title{Generate project file for IDE.}
 \usage{
-generate_project(dir, IDE, ...)
+generate_project(dir, IDE, cmake_options = "")
 }
 \arguments{
-\item{dir}{the directory}
+\item{dir}{the directory of R package}
 
 \item{IDE}{the IDE to generate. It's the same as cmake generator.}
 
-\item{...}{args pass to cmake}
+\item{cmake_options}{additon cmake options.}
 }
 \description{
-Call cmake to generate project file for IDE.
+Generate project file for IDE. It calles `cmake` to generate
+project file, and then adjust the generated files if needed.
 }
 \author{
 Chenliang Xu

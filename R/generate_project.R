@@ -28,22 +28,21 @@ setting_file <- function(pkg_dir, name) {
 
 ##' Generate project file for IDE.
 ##'
-##' Call cmake to generate project file for IDE.
-##' @param dir the directory
+##' Generate project file for IDE. It calles `cmake` to generate
+##' project file, and then adjust the generated files if needed.
+##' @param dir the directory of R package
 ##' @param IDE the IDE to generate. It's the same as cmake generator.
-##' @param ... args pass to cmake
+##' @param cmake_options additon cmake options.
 ##' @export
 ##' @author Chenliang Xu
-generate_project <- function(dir, IDE,
-                             ...) {
+generate_project <- function(dir, IDE, cmake_options = "") {
   IDE <- match.arg(IDE, ls_IDEs())
   cmake_dir <- normalizePath(dir)
   proj_dir <- file.path(dir, "proj")
   dir.create(proj_dir, recursive = TRUE)
   proj_dir <- normalizePath(file.path(dir, "proj"))
-  cmake(paste("-G", shQuote(IDE), cmake_dir), proj_dir, ...)
+  cmake(paste("-G", shQuote(IDE), cmake_dir, cmake_options), proj_dir)
   proj_name <- readLines(setting_file(dir, "projectname"), n = 1, warn = FALSE)
-
   if (length(grep("^Eclipse CDT4", IDE)) > 0) {
     ## Temperary fix for the bug of cmake Eclipse IDE that
     ## doesn't handle include path properly.
@@ -87,21 +86,4 @@ generate_project <- function(dir, IDE,
     XML::addChildren(conf, completion)
     write(XML::saveXML(proj), file = file.path(proj_dir, paste0(proj_name, ".project")))
   }
-}
-
-create_xml_path <- function(xml_obj, path) {
-  if(length(XML::getNodeSet(xml_obj, path)) > 0) return(NULL)
-  steps <- strsplit(path, "/")[[1]]
-  current_node <- xml_obj
-  for (step in steps) {
-    if (step == "") next
-    if (length(XML::getNodeSet(current_node, paste0("/", step))) == 0) {
-      child <- XML::newXMLNode(step)
-      XML::addChildren(current_node, child)
-      current_node <- child
-    } else {
-      current_node <- XML::getNodeSet(current_node, paste0("/", step))[[1]]
-    }
-  }
-  return(NULL)
 }

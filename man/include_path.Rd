@@ -2,7 +2,7 @@
 % Please edit documentation in R/include_path.R
 \name{include_path}
 \alias{include_path}
-\title{Include path of package.}
+\title{Include path for compiling the package.}
 \usage{
 include_path(dir = ".")
 }
@@ -13,9 +13,6 @@ include_path(dir = ".")
 The include path of package.
 }
 \description{
-Include path of package.
-}
-\details{
 The implementation is copied from `tools:::.install_packages` and
 modifyed gently.
 }

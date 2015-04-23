@@ -1,8 +1,7 @@
-##' Include path of package.
+##' Include path for compiling the package.
 ##'
 ##' The implementation is copied from `tools:::.install_packages` and
 ##' modifyed gently.
-##' @title Include path of package.
 ##' @param dir The directory of package.
 ##' @return The include path of package.
 ##' @export

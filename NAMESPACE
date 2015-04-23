@@ -2,6 +2,7 @@
 
 export(add_cmake)
 export(cmake)
+export(cmaker_command_path)
 export(generate_project)
 export(include_path)
 export(list_sources)

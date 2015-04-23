@@ -88,20 +88,3 @@ generate_project <- function(dir, IDE,
     write(XML::saveXML(proj), file = file.path(proj_dir, paste0(proj_name, ".project")))
   }
 }
-
-create_xml_path <- function(xml_obj, path) {
-  if(length(XML::getNodeSet(xml_obj, path)) > 0) return(NULL)
-  steps <- strsplit(path, "/")[[1]]
-  current_node <- xml_obj
-  for (step in steps) {
-    if (step == "") next
-    if (length(XML::getNodeSet(current_node, paste0("/", step))) == 0) {
-      child <- XML::newXMLNode(step)
-      XML::addChildren(current_node, child)
-      current_node <- child
-    } else {
-      current_node <- XML::getNodeSet(current_node, paste0("/", step))[[1]]
-    }
-  }
-  return(NULL)
-}

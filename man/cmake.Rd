@@ -5,7 +5,7 @@
 \title{Run cmake within R}
 \usage{
 cmake(options = "--version", wd = getwd(), env_vars = NULL,
-  cmake_command = cmaker_command_path("cmake"), ...)
+  cmake_command = cmaker_command_path("cmake"))
 }
 \arguments{
 \item{options}{a character vector of options pass to cmake.}
@@ -15,9 +15,6 @@ cmake(options = "--version", wd = getwd(), env_vars = NULL,
 \item{env_vars}{environment variables to set before running the command.}
 
 \item{cmake_command}{the name or the path of cmake command in the system.}
-
-\item{...}{additional arguments passed to
-\code{devtools::system_check}}
 }
 \value{
 Invisible \code{TRUE} if the command succeeds, throws an error if

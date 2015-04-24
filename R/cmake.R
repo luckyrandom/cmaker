@@ -15,3 +15,15 @@ cmake <- function(options = "--version",
   if (!command_exist(cmake_command)) stop("cmake command not found")
   devtools::in_dir(wd, devtools::system_check(cmake_command, options, env_vars))
 }
+
+
+cmake_help <- {function(){
+  out_cache <- NULL
+  function() {
+    if ( is.null(out_cache) ) {
+      out <- system(paste(cmaker_command_path("cmake"), "--help"), intern = TRUE)
+      out_cache <<- paste0(out, collapse = "\n")
+    }
+    out_cache
+  }
+}}()

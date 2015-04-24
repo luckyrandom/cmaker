@@ -16,10 +16,19 @@ sysname <- Sys.info()[['sysname']]
 ##' @export
 ##' @author Chenliang Xu
 ls_IDEs <- function() {
-  switch(sysname,
-         Windows= IDEs_windows,
-         Linux  = IDEs_linux,
-         Darwin = IDEs_mac)
+  IDEs <- switch(sysname,
+                 Windows= IDEs_windows,
+                 Linux  = IDEs_linux,
+                 Darwin = IDEs_mac)
+  supported <- sapply(IDEs,
+                      function(x) {
+                        length(grep(x, cmake_help())) == 1
+                      })
+  if ( any( !supported ) ) {
+    warning(paste(paste0("`", IDEs[!supported], "`", collapse = ","),
+                  "are not supported since `cmake` on your system is too old"))
+  }
+  IDEs[supported]
 }
 
 setting_file <- function(pkg_dir, name) {

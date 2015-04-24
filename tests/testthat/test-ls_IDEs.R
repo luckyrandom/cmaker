@@ -5,6 +5,7 @@ test_that("unsupported IDEs", {
               local({
                 environment(cmake_help)$out_cache <- "Xcode"
                 ls_IDEs()
+                environment(cmake_help)$out_cache <- NULL
               }),
               "`cmake` on your system is too old")
           })

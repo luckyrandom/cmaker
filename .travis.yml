@@ -14,6 +14,9 @@ install:
 
 before_script:
   - Rscript -e 'library(devtools); document(clean=TRUE, reload=TRUE);'
+  - which cmake
+  - cmake --version
+  - cmake --help
 
 script: ./travis-tool.sh run_tests
 

@@ -11,13 +11,13 @@ test_that("build package", {
                              add_cmake("rcppexample")
                              generate_project("rcppexample", "CodeLite - Ninja")
                              in_dir("rcppexample/proj",
-                                    system_check(cmaker_command_path("ninja")))
+                                    devtools::system_check(cmaker_command_path("ninja")))
                              load_asis("rcppexample")
                              TRUE
                          })
                          expect_equal(rcpp_hello_world(),
                                list(c(3, 5, 8),
                                     3))
-                         unload("rcppexample")
+                         devtools::unload("rcppexample")
                      })
           })

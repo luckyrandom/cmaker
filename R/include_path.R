@@ -11,7 +11,7 @@ include_path <- function(dir = ".") {
   pkgInfo <- tools:::.split_description(tools:::.read_description(f))
   linkTo <- pkgInfo$LinkingTo
   include <- character()
-  if (!is.null(linkTo)) {
+  if (!is.null(linkTo) && length(linkTo)>0 ) {
     lpkgs <- sapply(linkTo, function(x) x[[1L]])
     paths <- sapply(lpkgs, function(pkg) find.package(pkg, quiet = FALSE))
     bpaths <- basename(paths)

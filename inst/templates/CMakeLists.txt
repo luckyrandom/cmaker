@@ -73,7 +73,7 @@ if(NOT PKG_INCLUDE_RESULT EQUAL 0)
 endif()
 include_directories(BEFORE ${LIBR_INCLUDE_DIRS})
 include_directories(BEFORE ${PKG_INCLUDE_DIRS})
-include_directories(BEFORE "../inst/include/")
+include_directories(BEFORE "${PKG_DIR}/inst/include/")
 
 execute_process(
   COMMAND ${LIBR_EXECUTABLE} "CMD" "config" "--ldflags"

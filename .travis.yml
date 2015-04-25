@@ -3,15 +3,20 @@ language: c
 sudo: required
 
 before_install:
+  - (cd ${HOME} && wget http://www.cmake.org/files/v3.2/cmake-3.2.2-Linux-x86_64.tar.gz && tar zxf cmake*.tar.gz)
   - curl -OL http://raw.github.com/craigcitro/r-travis/master/scripts/travis-tool.sh
   - chmod 755 ./travis-tool.sh
   - ./travis-tool.sh bootstrap
+  - sudo apt-get install -y ninja-build
 install:
   - ./travis-tool.sh install_github hadley/devtools
   - ./travis-tool.sh install_deps
 
 before_script:
   - Rscript -e 'library(devtools); document(clean=TRUE, reload=TRUE);'
+  - which cmake
+  - cmake --version
+  - cmake --help
 
 script: ./travis-tool.sh run_tests
 
@@ -23,9 +28,11 @@ after_success:
   - git config --global user.name "Chenliang Xu"
   - ./deploy.sh -s master-src -d master -c 'make -k prebuild'
 
+
 env:
   global:
-    secure: "mrBdQPDAnoKUpRc21YSbP6LVsJpz1u6/5oS1Ypnypg5bFzjX33akCAonMcq6qtNXogHDolWC5ADcUDYE+PAV3Nt1ivb61IQhQCm+emE0FjYcQ5W2kiE4sVwPIWR+N+3R4LJ/6zC7j4O+SZUwQbWVlKOx1I0zKyuy1PHOBOxZDyc="
+    - PATH=${HOME}/cmake-3.2.2-Linux-x86_64/bin:${PATH}
+    - secure: "mrBdQPDAnoKUpRc21YSbP6LVsJpz1u6/5oS1Ypnypg5bFzjX33akCAonMcq6qtNXogHDolWC5ADcUDYE+PAV3Nt1ivb61IQhQCm+emE0FjYcQ5W2kiE4sVwPIWR+N+3R4LJ/6zC7j4O+SZUwQbWVlKOx1I0zKyuy1PHOBOxZDyc="
     
 branches:
   except:

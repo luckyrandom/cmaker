@@ -13,7 +13,7 @@ word-wrap: normal;
 }
 </style>
 
-<a href="https://twitter.com/share" class="twitter-share-button" data-text="#cmaker : setup C/C++ develop environment for R package" data-via="luckyrand" data-hashtags="rstats">Tweet</a>
+<a href="https://twitter.com/share" class="twitter-share-button" data-text="#cmaker : setup C/C++ develop environment for R package" data-via="" data-hashtags="">Tweet</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
 Powered by `CMake`, the R package `cmaker` setups C/C++ develop
